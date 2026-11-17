@@ -1,0 +1,17 @@
+# Базовый триггер: только HTML-файлы в main.
+name: Basic HTML trigger
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.html'
+
+jobs:
+  test-html:
+    name: Проверка HTML push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Сообщить об успешном push HTML
+        run: echo "HTML-файл успешно отправлен в ветку main."
