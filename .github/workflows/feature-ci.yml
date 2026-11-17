@@ -1,0 +1,30 @@
+# CI для feature-веток и PR в main; фильтры branches и paths работают совместно (AND).
+name: Feature branch CI
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+      - '!feature/wip'
+    paths:
+      - 'src/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+
+jobs:
+  feature-ci:
+    name: Feature context diagnostics
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Print commit and ref
+        env:
+          COMMIT_SHA: ${{ github.sha }}
+          GIT_REF: ${{ github.ref }}
+        run: |
+          echo "Commit SHA: $COMMIT_SHA"
+          echo "Git ref: $GIT_REF"
