@@ -1,0 +1,4 @@
+feat: add html landing page
+docs: update assignment notes [skip ci]
+fix: correct feature workflow path filter
+release: prepare v1.0.0
