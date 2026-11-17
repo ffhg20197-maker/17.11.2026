@@ -1,0 +1,11 @@
+# Apache 2.4+ — merge with existing .htaccess; do not overwrite WordPress rewrites.
+<Files "wp-config.php">
+    Require all denied
+</Files>
+<FilesMatch "^(\.htaccess|\.htpasswd|readme\.html|license\.txt)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "\.(sql|bak|old|orig|save|swp|zip|tar|gz)$">
+    Require all denied
+</FilesMatch>
+Options -Indexes
